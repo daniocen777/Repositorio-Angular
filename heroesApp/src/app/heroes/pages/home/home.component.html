@@ -1,0 +1,40 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="push">
+    <!-- Toolbar del sidenav -->
+    <mat-toolbar color="accent">
+      <span>Menú</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon> menu </mat-icon>
+      </button>
+    </mat-toolbar>
+    <!-- Lista -->
+    <mat-nav-list>
+      <a routerLink="./list" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>label</mat-icon>
+        <span>Lista de Hérores</span>
+      </a>
+      <a routerLink="./create" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>add</mat-icon>
+        <span>Agregar Hérore</span>
+      </a>
+      <a routerLink="./search" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span>Buscar Hérore</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!-- Toolbar General-->
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon> menu </mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button mat-button>Cerrar sesión</button>
+  </mat-toolbar>
+
+  <!-- Contenido -->
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
