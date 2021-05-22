@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="span">Login</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="signup-form">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <!-- Email -->
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        name="email"
+        id="email"
+        placeholder="Email"
+        required
+        formControlName="email"
+      />
+      <!-- <mat-hint>Please enter a valid email.</mat-hint> -->
+      <mat-error>Correo inválido</mat-error>
+    </mat-form-field>
+    <!-- Password -->
+    <mat-form-field hintLabel="Debe tener al menos 6 caracteres">
+      <input
+        type="password"
+        matInput
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+        minlength="6"
+        formControlName="password"
+      />
+      <!-- <mat-hint>Ingresa contraseña</mat-hint> -->
+      <mat-error>Debe tener al menos 6 caracteres</mat-error>
+    </mat-form-field>
+
+    <!-- Botón -->
+    <button mat-raised-button color="accent" [disabled]="loginForm.invalid">
+      Login
+    </button>
+    <mat-spinner></mat-spinner>
+  </form>
+</section>

@@ -1,0 +1,75 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="span">Login</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="signup-form">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+  >
+    <!-- Email -->
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        ngModel
+        name="email"
+        id="email"
+        placeholder="Email"
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >Correo no debe estar vacío</mat-error
+      >
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >Correo inválido</mat-error
+      >
+    </mat-form-field>
+    <!-- Password -->
+    <mat-form-field hintLabel="Debe tener al menos 6 caracteres">
+      <input
+        type="password"
+        matInput
+        ngModel
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+        minlength="6"
+        #pwInput="ngModel"
+      />
+      <mat-hint align="end"> {{ pwInput.value?.length }} / 6 </mat-hint>
+      <mat-error>Debe tener al menos 6 caracteres</mat-error>
+    </mat-form-field>
+    <!-- Fecha de cumpleaños -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Cumpleaños</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [max]="maxDate"
+        ngModel
+        name="birthdate"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- Checkbox -->
+    <mat-checkbox ngModel name="agree"
+      >Aceptar términos y condiciones</mat-checkbox
+    >
+    <!-- Botón -->
+    <button mat-raised-button color="accent" [disabled]="f.invalid">
+      Login
+    </button>
+  </form>
+</section>

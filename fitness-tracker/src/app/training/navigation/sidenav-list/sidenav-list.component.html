@@ -1,0 +1,23 @@
+<!-- Toolbar del sidenav -->
+<mat-toolbar color="accent">
+  <span>Menú</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="onClose()">
+    <mat-icon> menu </mat-icon>
+  </button>
+</mat-toolbar>
+<!-- Lista -->
+<mat-nav-list>
+  <a routerLink="./training" mat-list-item (click)="onClose()">
+    <mat-icon mat-list-icon>fitness_center</mat-icon>
+    <span>Entranamiento</span>
+  </a>
+  <a routerLink="./current" mat-list-item (click)="onClose()">
+    <mat-icon mat-list-icon>model_training</mat-icon>
+    <span>Entranamiendo Personalizado</span>
+  </a>
+  <a routerLink="./past" mat-list-item (click)="onClose()">
+    <mat-icon mat-list-icon>sports_handball</mat-icon>
+    <span>Entranamientos Anteriores</span>
+  </a>
+</mat-nav-list>
