@@ -1,0 +1,10 @@
+@import "../../../styles/mixin.scss";
+
+.shadow {
+    @include shadow;
+    padding: 20px;
+}
+
+.card {
+    @include card
+}

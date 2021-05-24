@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-completo-364f0": {
+      "hosting": {
+        "completo": [
+          "angular-completo-364f0"
+        ]
+      }
+    }
+  }
+}
