@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ingresosapp-cd8d6": {
+      "hosting": {
+        "ingresosApp": [
+          "ingresosapp-cd8d6"
+        ]
+      }
+    }
+  }
+}
