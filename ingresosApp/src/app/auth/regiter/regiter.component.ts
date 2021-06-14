@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class RegiterComponent implements OnInit, OnDestroy {
   loading: boolean = false;
   /* Para evitar fugas de memoria */
-  private _suscription?: Subscription;
+  private _suscription: Subscription = new Subscription();
 
   constructor(
     private _authService: AuthService,

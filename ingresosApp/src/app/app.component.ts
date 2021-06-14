@@ -8,7 +8,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
   constructor(private _authService: AuthService) {}
-  ngOnInit(): void {
-    this._authService.iniAuthListener();
+  async ngOnInit() {
+    await this._authService.iniAuthListener();
   }
 }

@@ -12,7 +12,7 @@ import { Observable, Subscription } from 'rxjs';
 import { User } from './user.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
-import { SetUserAction } from './auth.actions';
+import { SetUserAction, UnsetUserAction } from './auth.actions';
 import {
   ActivateLoadingAction,
   DeactivateLoadingAction,
@@ -24,6 +24,7 @@ import {
 export class AuthService {
   /* Controlar las subcripciones */
   private _userSubscription: Subscription = new Subscription();
+  private usuario: User | undefined | null;
 
   constructor(
     private _auth: AngularFireAuth,
@@ -33,7 +34,7 @@ export class AuthService {
   ) {}
 
   /* Solo se ejecuta una vez en toda la aplicación */
-  iniAuthListener() {
+  async iniAuthListener() {
     this._auth.authState.subscribe((fbUser) => {
       /* console.log('===========', fbUser); */
       if (fbUser) {
@@ -43,8 +44,10 @@ export class AuthService {
           .subscribe((userObj: any) => {
             const newUser = new User(userObj);
             this._store.dispatch(new SetUserAction(newUser));
+            this.usuario = newUser;
           });
       } else {
+        this.usuario = null;
         this._userSubscription?.unsubscribe();
       }
     });
@@ -108,6 +111,7 @@ export class AuthService {
   logout(): void {
     this._router.navigate(['/login']);
     this._auth.signOut();
+    this._store.dispatch(new UnsetUserAction());
   }
 
   isAuth(): Observable<boolean> {
@@ -120,6 +124,10 @@ export class AuthService {
         return fbUser != null;
       })
     );
+  }
+
+  getUser() {
+    return { ...this.usuario };
   }
 }
 

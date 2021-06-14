@@ -4,7 +4,7 @@ import * as fromAuth from './auth.actions';
 import { User } from './user.model';
 
 export interface AuthState {
-  user: User | null;
+  user: User;
 }
 
 export const initialState: AuthState = {
@@ -24,6 +24,15 @@ export function autReducer(
       return {
         user: {
           ...action.user,
+        },
+      };
+
+    case fromAuth.UNSET_USER:
+      return {
+        user: {
+          uid: '',
+          name: '',
+          email: '',
         },
       };
     default:
