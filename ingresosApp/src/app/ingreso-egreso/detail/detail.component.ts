@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { IngresoEgresoService } from '../ingreso-egreso.service';
 
 import Swal from 'sweetalert2';
+import { IngresoEgresoStateState } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +17,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   items: IngresoEgreso[] = [];
   subscription: Subscription = new Subscription();
   constructor(
-    private _store: Store<AppState>,
+    private _store: Store<IngresoEgresoStateState>,
     private _ingresoEgresoService: IngresoEgresoService
   ) {}
 

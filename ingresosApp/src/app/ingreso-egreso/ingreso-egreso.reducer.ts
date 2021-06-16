@@ -1,6 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as fromIngresoEgreso from './ingreso-egreso.actions';
 import { IngresoEgreso } from './ingreso-egreso.model';
+import { AppState } from '../app.reducer';
 
 export interface IngresoEgresoState {
   items: IngresoEgreso[];
@@ -10,7 +11,12 @@ export const initialState: IngresoEgresoState = {
   items: [],
 };
 
-export function reducer(
+/* Exportar AppState para usar el reducer*/
+export interface IngresoEgresoStateState extends AppState {
+  ingresoEgreso: IngresoEgresoState;
+}
+
+export function ingresoEgresoReducer(
   state = initialState,
   action: fromIngresoEgreso.actions
 ): IngresoEgresoState {
