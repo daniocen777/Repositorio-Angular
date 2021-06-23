@@ -1,0 +1,29 @@
+<app-template>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+    <div fxLayout="column" fxFlex="25" style="padding-left: 20px;">
+      <div>
+        <mat-selection-list #forms [multiple]="false">
+          <h2>Template</h2>
+          <mat-divider></mat-divider>
+          <mat-list-option value="basic">
+            <a style="text-underline-offset: unset" routerLink="basic">Basic</a>
+          </mat-list-option>
+          <mat-list-option value="reactive">
+            <a style="width: 100%; display: block" routerLink="basic">Basic</a>
+          </mat-list-option>
+
+          <h2>Reactive</h2>
+          <mat-divider></mat-divider>
+          <mat-list-option value="reactive">
+            <a style="text-underline-offset: unset" routerLink="basic">Basic</a>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </div>
+    <div fxFlex="75" fxLayoutAlign="center start">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</app-template>
+
+<!-- style="background-color: burlywood; padding-right: 10px;" -->
