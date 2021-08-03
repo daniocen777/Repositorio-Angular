@@ -1,0 +1,54 @@
+<form autocomplete="off" [formGroup]="myForm">
+  <div class="form-group">
+    <!-- Producto -->
+    <label for="product" class="form-control-label">Producto</label>
+    <input
+      class="form-control"
+      type="text"
+      formControlName="product"
+      placeholder="Nombre de producto"
+      id="product"
+    />
+    <span class="form-text text-danger"> Debe de ser de 3 letras </span>
+  </div>
+
+  <div class="form-group">
+    <label for="price" class="form-control-label">Precio</label>
+    <input class="form-control" type="number" placeholder="Precio" id="price" />
+    <span class="form-text text-danger"> Debe de ser de 3 letras </span>
+  </div>
+  <!-- Stock -->
+  <div class="form-group">
+    <label for="stock" class="form-control-label">Stock</label>
+    <input
+      class="form-control"
+      type="number"
+      placeholder="Cantidad disponible"
+      id="stock"
+    />
+    <span class="form-text text-danger"> Debe de ser de 3 letras </span>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="submit" class="btn btn-default" style="float: right;">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<hr />
+
+<div class="row">
+  <div class="col-8">
+    <span>Valid</span>
+    <pre>{{ myForm.valid }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+  </div>
+</div>
