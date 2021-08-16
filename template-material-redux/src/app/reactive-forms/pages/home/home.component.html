@@ -1,6 +1,6 @@
 <app-template>
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
-    <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="25">
+    <!--  <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="25">
       <div>
         <mat-selection-list #forms [multiple]="false">
           <h2 style="padding-left: 20px">Template</h2>
@@ -35,9 +35,15 @@
           </mat-list-option>
         </mat-selection-list>
       </div>
-    </div>
-    <div fxFlex="75">
-      <router-outlet></router-outlet>
+    </div> -->
+    <div fxFlex="100" >
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Por Template - Básico">
+          <app-basic></app-basic>
+        </mat-tab>
+        <mat-tab label="Por Template - Dinámico">Content 2</mat-tab>
+        <mat-tab label="Third">Content 3</mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </app-template>

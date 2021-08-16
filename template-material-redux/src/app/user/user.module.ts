@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './pages/user/user.component';
-import { TemplateModule } from '../template/template.module';
 
 import { Routes, RouterModule } from '@angular/router';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserItemComponent } from './components/user-item/user-item.component';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [{ path: '', component: UserComponent }];
 
@@ -15,7 +15,7 @@ const routes: Routes = [{ path: '', component: UserComponent }];
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    TemplateModule,
+    SharedModule,
     FlexLayoutModule,
   ],
 })

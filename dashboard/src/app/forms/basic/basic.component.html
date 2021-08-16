@@ -1,4 +1,4 @@
-<form autocomplete="off" [formGroup]="myForm">
+<form (ngSubmit)="save()" autocomplete="off" [formGroup]="myForm">
   <div class="form-group">
     <!-- Producto -->
     <label for="product" class="form-control-label">Producto</label>
@@ -9,13 +9,23 @@
       placeholder="Nombre de producto"
       id="product"
     />
-    <span class="form-text text-danger"> Debe de ser de 3 letras </span>
+    <span *ngIf="validarCampos('product')" class="form-text text-danger">
+      Producto debe tener al menos 3 caracteres
+    </span>
   </div>
 
   <div class="form-group">
     <label for="price" class="form-control-label">Precio</label>
-    <input class="form-control" type="number" placeholder="Precio" id="price" />
-    <span class="form-text text-danger"> Debe de ser de 3 letras </span>
+    <input
+      class="form-control"
+      type="number"
+      formControlName="price"
+      placeholder="Precio"
+      id="price"
+    />
+    <span *ngIf="validarCampos('price')" class="form-text text-danger">
+      Precio debe ser mayor a 0
+    </span>
   </div>
   <!-- Stock -->
   <div class="form-group">
@@ -23,14 +33,19 @@
     <input
       class="form-control"
       type="number"
+      formControlName="stock"
       placeholder="Cantidad disponible"
       id="stock"
     />
-    <span class="form-text text-danger"> Debe de ser de 3 letras </span>
+    <span *ngIf="validarCampos('stock')" class="form-text text-danger">
+      Debe haber más de 4 productos
+    </span>
   </div>
   <div class="row">
     <div class="col">
-      <button type="submit" class="btn btn-default" style="float: right;">Guardar</button>
+      <button type="submit" class="btn btn-default" style="float: right">
+        Guardar
+      </button>
     </div>
   </div>
 </form>

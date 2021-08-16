@@ -5,19 +5,19 @@ import { ReactiveFormsRoutingModule } from './reactive-forms-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TemplateModule } from '../template/template.module';
 import { BasicComponent } from './components/basic/basic.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    BasicComponent
-  ],
+  declarations: [HomeComponent, BasicComponent],
   imports: [
     CommonModule,
     ReactiveFormsRoutingModule,
-    MaterialModule,FlexLayoutModule,
-    TemplateModule
-  ]
+    MaterialModule,
+    FlexLayoutModule,
+    SharedModule,
+    FormsModule,
+  ],
 })
-export class ReactiveFormsModule { }
+export class MyReactiveFormsModule {}

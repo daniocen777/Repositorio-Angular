@@ -4,14 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./reactive-forms/reactive-forms.module').then((m) => m.ReactiveFormsModule),
+    loadChildren: () =>
+      import('./reactive-forms/reactive-forms.module').then(
+        (m) => m.MyReactiveFormsModule
+      ),
   },
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
-
-  
 ];
 
 @NgModule({

@@ -1,0 +1,36 @@
+<section class="hero is-fullheight">
+  <div class="hero-head">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a [routerLink]="['/']" class="navbar-item">
+            <img src="/assets/logo.png" alt="" />
+          </a>
+          <span class="navbar-burger burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a [routerLink]="['/outcomes']" class="navbar-item">Gastos</a>
+            <a href="#" class="navbar-item">Desconectarse</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <!-- Contenido -->
+  <div class="hero-body">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="hero-foot">
+    <footer class="section">
+      <div class="container has-text-centered">Proyecto danicode</div>
+    </footer>
+  </div>
+</section>

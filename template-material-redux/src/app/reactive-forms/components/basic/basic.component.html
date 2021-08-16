@@ -1,23 +1,86 @@
-<div fxLayout="column" fxLayoutAlign="space-around stretch" style="margin-left: 20px; margin-top: 5px;">
-  <div>
-    <mat-form-field appearance="standard">
-      <mat-label>Standard form field</mat-label>
-      <input matInput placeholder="Placeholder" />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
+<div fxLayout="row" fxLayout.xs="column" style="margin-left: 40px;">
+  <div fxLayout="column" fxLayoutAlign="space-around stretch">
+    <div>
+      <h2>Template</h2>
+    </div>
+
+    <form class="form" #form="ngForm" (ngSubmit)="save()">
+      <!-- Producto -->
+      <div>
+        <mat-form-field class="full-width">
+          <mat-label>Producto</mat-label>
+          <input
+            matInput
+            placeholder="Producto"
+            ngModel
+            name="product"
+            required
+          />
+          <mat-icon matSuffix>shopping_cart</mat-icon>
+          <mat-error *ngIf="validateName()"> Ingrese este dato </mat-error>
+        </mat-form-field>
+      </div>
+      <br />
+      <!-- Precio -->
+      <div>
+        <mat-form-field class="full-width">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            type="number"
+            min="15"
+            placeholder="Precio"
+            ngModel
+            name="price"
+          />
+          <mat-icon matSuffix>paid</mat-icon>
+          <mat-error *ngIf="validatePrice()">
+            El precio debe ser mayor de S/ 15
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br />
+      <!-- Existencias -->
+      <div>
+        <mat-form-field class="full-width">
+          <mat-label>Existencias</mat-label>
+          <input
+            matInput
+            type="number"
+            min="1"
+            placeholder="Existencias"
+            ngModel
+            name="stock"
+          />
+          <mat-icon matSuffix>paid</mat-icon>
+          <!-- <mat-error> Ingrese este dato, por favor </mat-error> -->
+        </mat-form-field>
+      </div>
+      <br />
+      <div style="margin-left: 60px">
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          mat-raised-button
+          color="primary"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
   </div>
-  <div>
-    <mat-form-field appearance="standard">
-      <mat-label>Standard form field</mat-label>
-      <input matInput placeholder="Placeholder" />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="standard">
-      <mat-label>Standard form field</mat-label>
-      <input matInput placeholder="Placeholder" />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="space-around center"
+    style="margin-left: 60px"
+  >
+    <span>Valid</span>
+    <pre> {{ form.valid }} </pre>
+    <span>Pristine => Estado inicial (sin tocar formulario)</span>
+    <pre> {{ form.pristine }} </pre>
+    <span>Touched</span>
+    <pre> {{ form.touched }} </pre>
+    <span>Valor</span>
+    <pre> {{ form.value | json }} </pre>
   </div>
 </div>
