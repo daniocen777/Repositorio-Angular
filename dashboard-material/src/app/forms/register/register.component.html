@@ -1,0 +1,90 @@
+<form
+  autocomplete="off"
+  [formGroup]="miFormulario"
+  (ngSubmit)="grabar()"
+  style="margin-top: 15px; margin-left: 15px"
+>
+  <!-- Nombre -->
+  <div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Legacy form field</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="nombre"
+        placeholder="Nombre de usuario"
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-error *ngIf="validarCampo('nombre')"
+      >Este campo es obligatorio</mat-error
+    >
+  </div>
+  <!-- Correo -->
+  <div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Correo</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Correo electrónico"
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-error *ngIf="validarCampo('email')"
+      >Este campo es obligatorio</mat-error
+    >
+  </div>
+  <!-- usuario -->
+  <div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Usuario</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        placeholder="Nombre de usuario"
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-error *ngIf="validarCampo('username')"
+      >Usuario no puede ser strider</mat-error
+    >
+  </div>
+  <!-- Contraseña -->
+  <div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="************" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </div>
+  <!-- Contraseña -->
+  <div>
+    <mat-form-field appearance="legacy">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input type="password" matInput placeholder="************" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </div>
+  <div>
+    <button
+      type="submit"
+      mat-stroked-button
+      color="primary"
+      style="float: inline-end"
+    >
+      Guardar
+    </button>
+  </div>
+</form>
+<br />
+<mat-divider></mat-divider>
+<h5>Form Valid: {{ miFormulario.valid }}</h5>
+<h5>Nombre</h5>
+<pre> {{ miFormulario.controls.nombre.errors | json }} </pre>
+<h5>Email</h5>
+<pre> {{ miFormulario.controls.email.errors | json }} </pre>
+<h5>Username</h5>
+<pre> {{ miFormulario.controls.username.errors | json }} </pre>

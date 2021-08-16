@@ -1,0 +1,11 @@
+<!-- <mat-selection-list #menu [multiple]="false">
+  <mat-list-option *ngFor="let item of menuItems">
+    <a [routerLink]="item.url"> {{ item.name }} </a>
+  </mat-list-option>
+</mat-selection-list> -->
+
+<mat-nav-list fxLayout="row">
+  <mat-list-item *ngFor="let link of menuItems">
+    <a matLine [routerLink]="link.url">{{ link.name }}</a>
+  </mat-list-item>
+</mat-nav-list>

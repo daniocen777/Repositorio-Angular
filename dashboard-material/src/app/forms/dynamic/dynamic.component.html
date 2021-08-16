@@ -1,0 +1,81 @@
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="guardar()">
+  <!-- Nombre -->
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        formControlName="nombre"
+        placeholder="Nombre de producto"
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-error *ngIf="validarCampos('nombre')"
+        >Este campo es obligatorio</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <!-- Favoritos -->
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Favorito</mat-label>
+      <input
+        matInput
+        placeholder="Nombre favorito"
+        [formControl]="nuevoFavorito"
+        (keyup.enter)="agregarAFavoritos()"
+      />
+      <mat-icon matSuffix>gamepad</mat-icon>
+      <!-- <mat-error *ngIf="validarCampos('nombre')"
+              >Este campo es obligatorio</mat-error
+            > -->
+    </mat-form-field>
+    <button mat-button type="button" (click)="agregarAFavoritos()">
+      Agregar
+    </button>
+  </div>
+  <!-- Lista -->
+  <div>
+    <h3>Favoritos</h3>
+    <mat-divider></mat-divider>
+    <br />
+    <div formArrayName="favoritos">
+      <div *ngFor="let item of favoritosArr.controls; let i = index">
+        <mat-form-field appearance="outline">
+          <input matInput [formControlName]="i" placeholder="Nombre favorito" />
+          <mat-icon matSuffix>videogame_asset</mat-icon>
+          <!-- <mat-error *ngIf="validarCampos('nombre')"
+                  >Este campo es obligatorio</mat-error
+                > -->
+        </mat-form-field>
+        <button
+          mat-button
+          type="button"
+          color="warn"
+          (click)="borrarFavorito(i)"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button mat-raised-button type="submit" color="primary">Guardar</button>
+  </div>
+</form>
+<br />
+<mat-divider></mat-divider>
+<br />
+<div>
+  <div>
+    <span><h4>Valid</h4></span>
+    <pre>{{ myForm.valid }}</pre>
+  </div>
+  <div>
+    <span><h4>Value</h4></span>
+    <pre>{{ myForm.value | json }}</pre>
+  </div>
+  <div>
+    <span><h4>Juego agregado</h4></span>
+    <pre>{{ nuevoFavorito.value }}</pre>
+  </div>
+</div>

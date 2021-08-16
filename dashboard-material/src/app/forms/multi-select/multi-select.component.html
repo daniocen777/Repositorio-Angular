@@ -1,0 +1,57 @@
+<form class="form" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+  <!-- Región -->
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Continente</mat-label>
+    <mat-select formControlName="region">
+      <mat-option *ngFor="let region of regiones" [value]="region | lowercase">
+        {{ region }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- País -->
+  <mat-form-field
+    *ngIf="paises.length !== 0"
+    class="full-width"
+    appearance="fill"
+  >
+    <mat-label>País</mat-label>
+    <mat-select formControlName="pais">
+      <mat-option
+        *ngFor="let item of paises"
+        [value]="item.alpha3Code | lowercase"
+      >
+        {{ item.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- Frontera -->
+  <mat-form-field
+    *ngIf="fronteras.length > 0"
+    class="full-width"
+    appearance="fill"
+  >
+    <mat-label>Frontera</mat-label>
+    <mat-select formControlName="frontera">
+      <mat-option *ngFor="let item of fronteras" [value]="item.alpha3Code">
+        {{ item.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="cargando" class="full-width">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <button
+    type="submit"
+    mat-stroked-button
+    color="primary"
+    style="float: inline-end"
+  >
+    Seleccionar
+  </button>
+</form>
+
+<h3>Formulario</h3>
+<pre> valid: {{ miFormulario.valid }} </pre>
+<pre> Value: {{ miFormulario.value | json }} </pre>
