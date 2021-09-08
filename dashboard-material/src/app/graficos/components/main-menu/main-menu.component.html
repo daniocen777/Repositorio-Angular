@@ -1,0 +1,5 @@
+<mat-nav-list fxLayout="row">
+  <mat-list-item *ngFor="let link of menuItems">
+    <a matLine [routerLink]="link.url">{{ link.name }}</a>
+  </mat-list-item>
+</mat-nav-list>

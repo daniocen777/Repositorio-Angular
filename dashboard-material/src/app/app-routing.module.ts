@@ -16,6 +16,11 @@ const routes: Routes = [
     path: 'maps',
     loadChildren: () => import('./maps/maps.module').then((m) => m.MapsModule),
   },
+  {
+    path: 'graficos',
+    loadChildren: () =>
+      import('./graficos/graficos.module').then((m) => m.GraficosModule),
+  },
   { path: '**', redirectTo: 'forms' },
 ];
 

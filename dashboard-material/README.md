@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Paquetes
+
+Instalar:
+ng2-charts => npm install --save ng2-charts | https://valor-software.com/ng2-charts/
+Chart.js => npm install --save chart.js | https://valor-software.com/ng2-charts/
+material => https://material.angular.io/guide/getting-started
+angular flex-layout => https://github.com/angular/flex-layout
