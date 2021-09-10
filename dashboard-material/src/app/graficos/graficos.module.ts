@@ -13,6 +13,7 @@ import { BarrasComponent } from './pages/barras/barras.component';
 import { BarrasDoblesComponent } from './pages/barras-dobles/barras-dobles.component';
 import { DonaComponent } from './pages/dona/dona.component';
 import { DonaHttpComponent } from './pages/dona-http/dona-http.component';
+import { BarraComponent } from './components/barra/barra.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DonaHttpComponent } from './pages/dona-http/dona-http.component';
     BarrasDoblesComponent,
     DonaComponent,
     DonaHttpComponent,
+    BarraComponent,
   ],
   imports: [CommonModule, GraficosRoutingModule, MaterialModule, ChartsModule],
 })
