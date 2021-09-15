@@ -3,14 +3,25 @@
   <mat-divider></mat-divider>
 </div>
 
-<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px">
-	<div fxFlex="50">
-  		<h3>Primera Gráfica</h3>
-  		<app-barra></app-barra>
-	</div>
-	<div fxFlex="50">
-	  <h3>Segunda Gráfica</h3>
-	  <app-barra></app-barra>
-	</div>
+<div
+  fxLayout="row"
+  fxLayout.sm="column"
+  fxLayout.xs="column"
+  fxLayoutGap="10px"
+>
+  <div fxFlex="50">
+    <h3>Primera Gráfica</h3>
+    <app-barra
+      [horizontal]="true"
+      [barChartLabels]="proveedoresLabels"
+      [barChartData]="productoData"
+    ></app-barra>
+  </div>
+  <div fxFlex="50">
+    <h3>Segunda Gráfica</h3>
+    <app-barra
+      [barChartLabels]="proveedoresLabels"
+      [barChartData]="proveedoresData"
+    ></app-barra>
+  </div>
 </div>
-
