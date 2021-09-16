@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'users',
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
   },
@@ -21,7 +25,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./graficos/graficos.module').then((m) => m.GraficosModule),
   },
-  { path: '**', redirectTo: 'forms' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
