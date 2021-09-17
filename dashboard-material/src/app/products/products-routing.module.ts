@@ -7,7 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    children: [{ path: 'list', component: ProductsListComponent }],
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'list' },
+      { path: 'list', component: ProductsListComponent },
+    ],
   },
 ];
 
