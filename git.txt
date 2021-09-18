@@ -1,0 +1,53 @@
+*************  Diferentes formas de agregar archivos al escenario *************
+Historial de commits:
+==> git log 
+Commits específicos o independientes:
+==> git add [nombre_de_archivo]
+==> git commit -m "mensaje"
+Commits de archivos con una misma extensión:
+==> git add *.png
+==> git commit -m "Agregando imágenes png"
+Commits de archivos en una carpeta:
+==> git add css/
+==> git commit -m "Agregando archivos css"
+Commit de varios archivos a excepción de uno:
+==> git add -A
+==> git reset [nombre_de_archivo_a_quitar]
+==> git commit -m "Mensaje"
+Otros ejemplos:
+Agrega todos los txt de todo el proyecto:
+==> git add "*.txt"
+Agrega todos los txt del directorio actual:
+==> git add *.txt
+Agregar lista de archivos (separados con un espacio):
+==> git add <Lista de archivos>
+Agregar todos los pdf dentro de la carpeta pdfs:
+==> git add pdfs/*.pdf
+************* Otras formas de revisar el log y los cambios desde el último commit *************
+==> git log --oneline
+Todos los commits de manera resumida:
+==> git log --oneline --decorate --all --graph
+Creando Alias para nuestros comandos (se hace de manera global)
+==> git config --global alias.lg "log --oneline --decorate --all --graph"
+==> git lg | Llama al comando con ek alias lg
+Mostrar los alias:
+git config --global -l
+************* Diferencias entre commits y restauración de archivos *************
+Comparar archivos:
+==> git diff
+Comparar archivos en el staged:
+==> git diff --staged
+Quitar archivo del staged:
+==> git reset [nombre_de_archivo]
+Regresar al staged anterior:
+==> git checkout -- [nombre_del_archivo]
+************* Actualizar mensaje del commit y revertir commits *************
+Agregar archivos y commitearlo en una sólo línea:
+==> git commit -am "[Mensaje]"
+Arreglar mensaje del último commit:
+==> git commit --amend -m "[mensaje]"
+Nueva modificación en el último commit (HEAD):
+==> git reset --soft HEAD^
+==> git commit -am "[mensaje]"
+************* Preparando un repositorio para viajes en el tiempo *************
+
