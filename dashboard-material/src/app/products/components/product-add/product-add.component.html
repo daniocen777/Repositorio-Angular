@@ -1,0 +1,46 @@
+<div fxLayout="column" class="card">
+  <mat-card>
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>Nuevo Producto</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content fxLayoutAlign="center">
+      <form>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Nombre de producto</mat-label>
+            <input matInput placeholder="Producto" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Marca de producto</mat-label>
+            <input matInput placeholder="Marca" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Precio de producto</mat-label>
+            <input matInput type="number" placeholder="Precio" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Precio de venta producto</mat-label>
+            <input matInput type="number" placeholder="Precio de venta" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Imagen de producto</mat-label>
+            <input matInput type="text" placeholder="Imagen" />
+          </mat-form-field>
+        </p>
+      </form>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center">
+      <button mat-raised-button color="primary">Agregar</button>
+      <button mat-button color="warn">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
