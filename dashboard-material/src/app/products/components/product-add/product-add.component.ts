@@ -10,7 +10,7 @@ export class ProductAddComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Probando git en linux ********
+    // Probando git en linux ububtu
   }
 
 }
