@@ -22,6 +22,11 @@ const routes: Routes = [
       import('./forms/forms.module').then((m) => m.FormsModule),
   },
   {
+    path: 'customers',
+    loadChildren: () =>
+      import('./customers/customers.module').then((m) => m.CustomersModule),
+  },
+  {
     path: 'maps',
     loadChildren: () => import('./maps/maps.module').then((m) => m.MapsModule),
   },
@@ -37,4 +42,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
