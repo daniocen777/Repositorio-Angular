@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _store: Store<fromStore.CustomerModuleState>) {
+    this._store.select("customers").subscribe(response => {
+      console.log("ENTRANDO AL COMPONENTE DE LISTA DE CUSTOMERS", response);
+    });
+  }
 
   ngOnInit(): void {
   }
