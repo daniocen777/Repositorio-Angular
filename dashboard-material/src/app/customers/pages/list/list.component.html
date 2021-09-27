@@ -1,3 +1,68 @@
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint necessitatibus
-tenetur, explicabo fugiat, harum omnis animi libero debitis velit molestias nisi
-assumenda deleniti voluptatibus ut. Atque in beatae itaque animi?
+<div fxLayout="column">
+  <!-- Búsqueda -->
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      (keyup)="applyFilter($event)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.email }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.age | number }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          matTooltip="Editar"
+          color="default"
+          style="margin-right: 20px"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Eliminar"
+          matTooltipClass="tooltip-red"
+          color="warn"
+          aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <!-- Para la paginaciín => IMPORTAR MatPaginatorModule -->
+  <mat-paginator
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

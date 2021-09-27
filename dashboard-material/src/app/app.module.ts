@@ -9,6 +9,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material/material.module';
 
+
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
   imports: [
@@ -17,9 +18,9 @@ import { MaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     LayoutModule,
     HttpClientModule,
-    MaterialModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

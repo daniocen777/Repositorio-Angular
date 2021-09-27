@@ -14,6 +14,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   exports: [
@@ -30,6 +34,10 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTooltipModule
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }

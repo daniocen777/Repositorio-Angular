@@ -19,13 +19,29 @@ export const initialState: CustomerState = {
     initialState,
     on(aliasaction, state => ({ ...state, prop: newValue })),
 ); */
-export function reducer(state: CustomerState = initialState, action: fromCustomerActions.CustomerActions) {
+export function reducer(state: CustomerState = initialState, action: fromCustomerActions.CustomerActions): CustomerState {
     switch (action.type) {
         case fromCustomerActions.LOAD_CUSTOMERS: {
-            console.log('ESTADO ANTES DE IR A CUSTOMERS LOAD_CUSTOMERS', state);
             return {
                 ...state, // copia del estado anterior
                 loading: true
+            };
+        }
+        case fromCustomerActions.LOAD_CUSTOMERS_SUCCESS: {
+            const customers: Customer[] = action.payload;
+            return {
+                ...state,
+                loading: false,
+                loaded: true,
+                data: customers
+            };
+        }
+        case fromCustomerActions.LOAD_CUSTOMERS_FAIL: {
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+                error: action.payload
             };
         }
         default: {
