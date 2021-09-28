@@ -50,3 +50,13 @@ export function reducer(state: CustomerState = initialState, action: fromCustome
         }
     }
 }
+
+/* Selectores => para acceder a los datos de manera directa */
+// Acceso directo a la propiedad data: Customer[]
+export const getCustomers = (state: CustomerState) => state.data;
+// Acceso directo a la propiedad loaded: boolean
+export const getCustomersLoaded = (state: CustomerState) => state.loaded;
+// Acceso directo a la propiedad loading: boolean
+export const getCustomersLoading = (state: CustomerState) => state.loading;
+// Acceso directo a la propiedad error: string
+export const getCustomersError = (state: CustomerState) => state.error;
