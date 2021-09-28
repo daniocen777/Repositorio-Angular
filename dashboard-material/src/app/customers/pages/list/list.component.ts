@@ -43,8 +43,12 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy {
   private customerSubscription: Subscription = new Subscription;
 
   constructor(private _store: Store<fromStore.CustomerModuleState>) {
-    this.customerSubscription = this._store.select('customers').subscribe(result => {
+    /* this.customerSubscription = this._store.select('customers').subscribe(result => {
       this.dataSource.data = result.data;
+    }); */
+    // Usando el selector creado en el index de la carpeta "reducers"
+    this.customerSubscription = this._store.select(fromStore.getCustomers).subscribe(customers => {
+      this.dataSource.data = customers;
     });
   }
 
