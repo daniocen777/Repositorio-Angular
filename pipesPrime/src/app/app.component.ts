@@ -9,4 +9,8 @@ export class AppComponent {
   nombre: string = "Danicode";
 
   title = 'pipesPrime';
+
+  click(): void {
+    console.log(this.title);
+  }
 }
