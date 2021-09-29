@@ -1,0 +1,22 @@
+<div class="text-layout">
+  <h1>Pies Básicos</h1>
+  <p>Pies incluídos en angular</p>
+</div>
+<!-- grid => De PrimeFlex -->
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-card header="Uppercase" [subheader]="name | uppercase">
+      {{ nameLower }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-card header="Lowercase" [subheader]="name | lowercase">
+      {{ nameUpper }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <p-card header="Titlecase" [subheader]="name | titlecase">
+      {{ name }}
+    </p-card>
+  </div>
+</div>
