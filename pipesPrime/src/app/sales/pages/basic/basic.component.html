@@ -20,3 +20,74 @@
     </p-card>
   </div>
 </div>
+
+<div class="text-layout">
+  <h1>Fechas</h1>
+  <p>Pies para mostrar fechas</p>
+</div>
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-6">
+    <p-card>
+      <ul>
+        <li>Fecha</li>
+        <li>Fecha | date</li>
+        <li>Fecha | date:"short" => MM dddd yyyy</li>
+        <li>Fecha | date:"long"</li>
+        <li>Fecha | date:"MMMM" => Mes completo</li>
+        <li>Fecha | date:"MMMM dd, yyyy"</li>
+      </ul>
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6 lg:col-6">
+    <p-card>
+      <ul>
+        <li>{{ date }}</li>
+        <li>{{ date | date }}</li>
+        <li>{{ date | date: "short" }}</li>
+        <li>{{ date | date: "long" }}</li>
+        <li>{{ date | date: "MMMM" }}</li>
+        <li>{{ date | date: "MMMM dd, yyyy" }}</li>
+      </ul>
+    </p-card>
+  </div>
+</div>
+
+<!-- Test -->
+<div class="card">
+  <div class="card-container yellow-container">
+    <div class="flex flex-wrap justify-content-center">
+      <div
+        class="
+          border-circle
+          w-12rem
+          h-6rem
+          m-2
+          bg-yellow-500
+          text-gray-900
+          font-bold
+          flex
+          align-items-center
+          justify-content-center
+        "
+      >
+        Oval
+      </div>
+      <div
+        class="
+          border-circle
+          w-6rem
+          h-6rem
+          m-2
+          bg-yellow-500
+          text-gray-900
+          font-bold
+          flex
+          align-items-center
+          justify-content-center
+        "
+      >
+        circle
+      </div>
+    </div>
+  </div>
+</div>
