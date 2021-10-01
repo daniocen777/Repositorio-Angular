@@ -1,0 +1,14 @@
+<app-main [visible]="visible" (setVisible)="setVisible($event)"></app-main>
+
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-bell"
+      class="p-button-rounded p-button-warning p-button-outlined"
+      (click)="show()"
+    ></button>
+  </ng-template>
+</p-menubar>
