@@ -1,0 +1,11 @@
+<div class="grid">
+  <div class="col-12">
+    <p-sidebar
+      [(visible)]="visible"
+      [baseZIndex]="10000"
+      (onHide)="sidenavClosed()"
+    >
+      <p-panelMenu [model]="items"></p-panelMenu>
+    </p-sidebar>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+:host {
+  ::ng-deep .p-panelmenu .p-panelmenu-header > a {
+    box-shadow: none;
+    border: none;
+  }
+}
+
+:host {
+  ::ng-deep .p-sidebar .p-sidebar-header {
+    padding: 0.5rem;
+  }
+}
+
+:host {
+  ::ng-deep .p-sidebar .p-sidebar-content {
+    padding: 0.5rem;
+  }
+}
