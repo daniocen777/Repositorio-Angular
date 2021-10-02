@@ -5,6 +5,23 @@
       [baseZIndex]="10000"
       (onHide)="sidenavClosed()"
     >
+      <div class="flex justify-content-center flex-wrap card-container">
+        <div
+          class="
+            flex
+            align-items-center
+            justify-content-center
+            w-4rem
+            h-4rem
+          "
+        >
+          <p-avatar
+            image="assets/hisem2.png"
+            size="xlarge"
+            shape="circle"
+          ></p-avatar>
+        </div>
+      </div>
       <p-panelMenu [model]="items"></p-panelMenu>
     </p-sidebar>
   </div>
