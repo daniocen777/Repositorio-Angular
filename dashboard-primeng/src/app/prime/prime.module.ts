@@ -6,8 +6,12 @@ import { CardModule } from 'primeng/card';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
-  exports: [SidebarModule, ButtonModule, MenubarModule, CardModule, PanelMenuModule, AvatarModule, AvatarGroupModule]
+  exports: [SidebarModule, ButtonModule, MenubarModule,
+    CardModule, PanelMenuModule, AvatarModule,
+    AvatarGroupModule, TableModule, InputTextModule]
 })
 export class PrimeModule { }
