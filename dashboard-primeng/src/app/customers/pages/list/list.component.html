@@ -14,13 +14,11 @@
   >
     <ng-template pTemplate="caption">
       <div class="flex justify-content-between flex-wrap card-container">
-        <button
-          pButton
-          label="Clear"
-          class="p-button-outlined"
-          icon="pi pi-filter-slash"
-          (click)="clear(dt1)"
-        ></button>
+        <p-button
+          (click)="showResponsiveDialog()"
+          icon="pi pi-external-link"
+          label="Agregar"
+        ></p-button>
         <span class="p-input-icon-left p-ml-auto">
           <i class="pi pi-search"></i>
           <input
@@ -32,7 +30,6 @@
         </span>
       </div>
     </ng-template>
-
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th>ID</th>
@@ -51,3 +48,8 @@
     </ng-template>
   </p-table>
 </div>
+
+<app-create
+  [displayResponsive]="displayDialog"
+  (hideDialog)="hideResponsiveDialog($event)"
+></app-create>

@@ -14,6 +14,7 @@ import { Table } from 'primeng/table';
 })
 export class ListComponent implements OnInit, OnDestroy {
   customers: Customer[] = [];
+  displayDialog: boolean = false;
 
   private customerSubscription: Subscription = new Subscription;
 
@@ -35,6 +36,14 @@ export class ListComponent implements OnInit, OnDestroy {
 
   clear(table: Table) {
     table.clear();
+  }
+
+  showResponsiveDialog(): void {
+    this.displayDialog = true;
+  }
+
+  hideResponsiveDialog(event: boolean) {
+    this.displayDialog = event;
   }
 
 }

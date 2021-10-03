@@ -12,11 +12,13 @@ import { CustomerMainComponent } from './pages/customer-main/customer-main.compo
 import { SharedModule } from '../shared/shared.module';
 import { PrimeModule } from '../prime/prime.module';
 import { ListComponent } from './pages/list/list.component';
+import { CreateComponent } from './pages/create/create.component';
 
 @NgModule({
   declarations: [
     CustomerMainComponent,
-    ListComponent
+    ListComponent,
+    CreateComponent
   ],
   imports: [CommonModule, CustomersRoutingModule, PrimeModule, SharedModule,
     StoreModule.forRoot(reducers), EffectsModule.forRoot(effects)]
