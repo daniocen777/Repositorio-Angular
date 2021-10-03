@@ -11,12 +11,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { CustomerMainComponent } from './pages/customer-main/customer-main.component';
 import { SharedModule } from '../shared/shared.module';
 import { PrimeModule } from '../prime/prime.module';
-import { ListMainComponent } from './components/list-main/list-main.component';
+import { ListComponent } from './pages/list/list.component';
 
 @NgModule({
   declarations: [
     CustomerMainComponent,
-    ListMainComponent
+    ListComponent
   ],
   imports: [CommonModule, CustomersRoutingModule, PrimeModule, SharedModule,
     StoreModule.forRoot(reducers), EffectsModule.forRoot(effects)]
