@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CustomersRoutingModule } from './customers-routing.module';
 
@@ -20,7 +21,8 @@ import { CreateComponent } from './pages/create/create.component';
     ListComponent,
     CreateComponent
   ],
-  imports: [CommonModule, CustomersRoutingModule, PrimeModule, SharedModule,
+  imports: [CommonModule, ReactiveFormsModule, CustomersRoutingModule, 
+    PrimeModule, SharedModule,
     StoreModule.forRoot(reducers), EffectsModule.forRoot(effects)]
 })
 export class CustomersModule { }
