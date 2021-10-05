@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -13,8 +13,11 @@ import { Table } from 'primeng/table';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
+
   customers: Customer[] = [];
   displayDialog: boolean = false;
+  isEdit: boolean = false;
+  selectedCustomer: Customer = { name: '', email: '', age: 0 };
 
   private customerSubscription: Subscription = new Subscription;
 
@@ -25,9 +28,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('ANTES DE SISPRAR fromStore.LoadCustomers()');
     this._store.dispatch(new fromStore.LoadCustomers());
-    console.log('DISPARANDO ACCCIÓN fromStore.LoadCustomers()');
   }
 
   ngOnDestroy(): void {
@@ -38,12 +39,28 @@ export class ListComponent implements OnInit, OnDestroy {
     table.clear();
   }
 
-  showResponsiveDialog(): void {
+  /* showResponsiveDialog(): void {
     this.displayDialog = true;
-  }
+  } */
 
   hideResponsiveDialog(event: boolean) {
     this.displayDialog = event;
+  }
+
+  editCustomer(customer: Customer): void {
+    this.selectedCustomer = { ...customer };
+    this.displayDialog = true;
+    this.isEdit = true;
+  }
+
+  save() {
+    this.displayDialog = true;
+    this.isEdit = false;
+    this.selectedCustomer = {
+      name: '',
+      email: '',
+      age: 0
+    }
   }
 
 }

@@ -10,12 +10,13 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   exports: [
     SidebarModule, ButtonModule, MenubarModule,
     CardModule, PanelMenuModule, AvatarModule,
     AvatarGroupModule, TableModule, InputTextModule,
-    DialogModule, InputNumberModule]
+    DialogModule, InputNumberModule, TooltipModule]
 })
 export class PrimeModule { }

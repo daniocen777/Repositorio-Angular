@@ -11,7 +11,6 @@ export class CustomerService {
   constructor(private _http: HttpClient) { }
 
   getCustomers(): Observable<Customer[]> {
-    console.log('¿HAY DATA?', this._http.get<Customer[]>(`http://localhost:3000/usuarios`));
     return this._http.get<Customer[]>(`http://localhost:3000/usuarios`);
   }
 }

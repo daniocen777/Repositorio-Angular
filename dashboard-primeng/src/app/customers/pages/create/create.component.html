@@ -13,11 +13,23 @@
       <div class="p-fluid">
         <div class="p-field">
           <label for="name">Name</label>
-          <input id="name" type="text" pInputText />
+          <input
+            id="name"
+            type="text"
+            pInputText
+            formControlName="name"
+            [(ngModel)]="customer!.name"
+          />
         </div>
         <div class="p-field">
           <label for="email">Email</label>
-          <input id="email" type="email" pInputText />
+          <input
+            id="email"
+            type="email"
+            pInputText
+            formControlName="email"
+            [(ngModel)]="customer!.email"
+          />
         </div>
         <div class="p-field">
           <label for="age">Age</label>
@@ -26,6 +38,8 @@
             inputId="age"
             [min]="18"
             [max]="100"
+            formControlName="age"
+            [(ngModel)]="customer!.age"
           >
           </p-inputNumber>
         </div>
@@ -40,13 +54,15 @@
     ></p-button>
     <p-button
       *ngIf="!isUpdateEnable"
-      (click)="cancel()"
+      type="submit"
+      (click)="save()"
       label="Crear"
       styleClass="p-button-text"
     ></p-button>
     <p-button
       *ngIf="isUpdateEnable"
-      (click)="cancel()"
+      type="submit"
+      (click)="update()"
       label="Actualizar"
       styleClass="p-button-text"
     ></p-button>
