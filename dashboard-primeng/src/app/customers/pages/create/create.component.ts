@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store';
+
 import { Customer } from '../../models/customer.model';
 
 @Component({
@@ -15,9 +19,10 @@ export class CreateComponent implements OnInit {
   myForm: FormGroup;
   @Input() isUpdateEnable: boolean = false;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _store: Store<fromStore.CustomerModuleState>) {
     this.displayResponsive = false;
     this.myForm = this._fb.group({
+      id: [this.customer?.id, [Validators.required]],
       name: [this.customer?.name, [Validators.required]],
       email: [this.customer?.email, [Validators.required]],
       age: [this.customer?.age, [Validators.required]],
@@ -35,13 +40,13 @@ export class CreateComponent implements OnInit {
     this.displayResponsive = false;
   }
 
-  save(): void {
-    console.log('GUARDAR:', this.customer);
+  save(myForm: FormGroup): void {
+    console.log('GUARDAR:', myForm.value);
     this.cancel();
   }
 
-  update(): void {
-    console.log('ACTUALIZAR:', this.customer);
+  update(myForm: FormGroup): void {
+    this._store.dispatch(new fromStore.UpdateCustomer(myForm.value));
     this.cancel();
   }
 
