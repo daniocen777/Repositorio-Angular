@@ -12,10 +12,11 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class CustomerEffects {
-    constructor(private action$: Actions, private _customerService: CustomerService) { 
+    constructor(private action$: Actions, private _customerService: CustomerService) {
         console.log('ENTRA CustomerEffects');
     }
 
+    /* Effect para listar clientes */
     loadCutomers$: Observable<Action> = createEffect(() => this.action$.pipe(
         // ofType => Escuchar el action
         ofType(fromCustomersActions.LOAD_CUSTOMERS),
@@ -30,5 +31,16 @@ export class CustomerEffects {
         )
     ));
 
-
+    /* Effect para actualizar clientes */
+    updateCustomer: Observable<Action> = createEffect(() => this.action$.pipe(
+        ofType(fromCustomersActions.UPDATE_CUSTOMER),
+        // Optener los datos del payload
+        map((action: fromCustomersActions.UpdateCustomer) => action.payload),
+        // Ejecutar el servicio
+        switchMap((payload) => this._customerService.update(payload).pipe(
+            map(response => new fromCustomersActions.UpdateCustomerSuccess(response)
+            ),
+            catchError(error => of(new fromCustomersActions.UpdateCustomerFail(error)))
+        )
+        )));
 }
