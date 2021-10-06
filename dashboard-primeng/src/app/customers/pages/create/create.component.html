@@ -43,6 +43,13 @@
           >
           </p-inputNumber>
         </div>
+        <input
+          id="id"
+          type="text"
+          formControlName="id"
+          [(ngModel)]="customer!.id"
+          hidden
+        />
       </div>
     </div>
   </form>
@@ -55,14 +62,14 @@
     <p-button
       *ngIf="!isUpdateEnable"
       type="submit"
-      (click)="save()"
+      (click)="save(myForm)"
       label="Crear"
       styleClass="p-button-text"
     ></p-button>
     <p-button
       *ngIf="isUpdateEnable"
       type="submit"
-      (click)="update()"
+      (click)="update(myForm)"
       label="Actualizar"
       styleClass="p-button-text"
     ></p-button>
