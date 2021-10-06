@@ -41,6 +41,22 @@ export function reducer(state: CustomerState = initialState, action: fronCustome
                 error: action.payload
             };
         }
+        case fronCustomerActions.UPDATE_CUSTOMER_SUCCESS: {
+            let customerForUpdate = state.data.map(customer => {
+                if (customer.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return customer;
+                }
+            });
+
+            return {
+                ...state,
+                data: customerForUpdate,
+                loaded: true,
+                loading: false
+            };
+        }
         default: {
             return state;
         }
