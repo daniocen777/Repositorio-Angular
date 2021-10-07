@@ -11,12 +11,25 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   exports: [
-    SidebarModule, ButtonModule, MenubarModule,
-    CardModule, PanelMenuModule, AvatarModule,
-    AvatarGroupModule, TableModule, InputTextModule,
-    DialogModule, InputNumberModule, TooltipModule]
+    SidebarModule,
+    ButtonModule,
+    MenubarModule,
+    CardModule,
+    PanelMenuModule,
+    AvatarModule,
+    AvatarGroupModule,
+    TableModule,
+    InputTextModule,
+    DialogModule,
+    InputNumberModule,
+    TooltipModule,
+    ConfirmDialogModule,
+    ToastModule
+  ]
 })
 export class PrimeModule { }

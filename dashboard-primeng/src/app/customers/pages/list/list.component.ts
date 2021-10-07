@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 
 import { Store } from '@ngrx/store';
 
@@ -10,7 +12,8 @@ import { Table } from 'primeng/table';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
+  providers: [ConfirmationService, MessageService]
 })
 export class ListComponent implements OnInit, OnDestroy {
 
@@ -21,7 +24,9 @@ export class ListComponent implements OnInit, OnDestroy {
 
   private customerSubscription: Subscription = new Subscription;
 
-  constructor(private _store: Store<fromStore.CustomerModuleState>) {
+  constructor(private _store: Store<fromStore.CustomerModuleState>,
+    private _confirmationService: ConfirmationService,
+    private _messageService: MessageService) {
     this.customerSubscription = this._store.select(fromStore.getCustomers).subscribe((customers: Customer[]) => {
       this.customers = customers;
     });
@@ -61,6 +66,28 @@ export class ListComponent implements OnInit, OnDestroy {
       email: '',
       age: 0
     }
+  }
+
+  deleteConfirm() {
+    console.log('ELIMINANDO');
+    this._confirmationService.confirm({
+      message: '¿Está seguro de eliminar este dato?',
+      header: 'Confirmar Eliminación',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this._messageService.add({ severity: 'info', summary: 'Confirmado', detail: 'Cliente eliminado' });
+      },
+      reject: (type: any) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this._messageService.add({ severity: 'error', summary: 'Rechazado', detail: 'Ha rechazado la operación' });
+            break;
+          case ConfirmEventType.CANCEL:
+            this._messageService.add({ severity: 'warn', summary: 'Cancelado', detail: 'Usted a cancelado la operación' });
+            break;
+        }
+      }
+    });
   }
 
 }

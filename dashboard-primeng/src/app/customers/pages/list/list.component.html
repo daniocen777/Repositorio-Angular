@@ -62,6 +62,7 @@
             class="p-button-rounded p-button-warning"
             pTooltip="Eliminar"
             tooltipPosition="top"
+            (click)="deleteConfirm()"
           ></button>
         </td>
       </tr>
@@ -75,3 +76,6 @@
   [isUpdateEnable]="isEdit"
   (hideDialog)="hideResponsiveDialog($event)"
 ></app-create>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
