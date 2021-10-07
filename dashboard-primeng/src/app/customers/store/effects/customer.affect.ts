@@ -43,4 +43,17 @@ export class CustomerEffects {
             catchError(error => of(new fromCustomersActions.UpdateCustomerFail(error)))
         )
         )));
+
+    /* Effect para Agregar nuevo clientes */
+    addCustomer: Observable<Action> = createEffect(() => this.action$.pipe(
+        ofType(fromCustomersActions.ADD_CUSTOMER),
+        // Optener los datos del payload
+        map((action: fromCustomersActions.AddCustomer) => action.payload),
+        // Ejecutar el servicio
+        switchMap((payload) => this._customerService.addCustomer(payload).pipe(
+            map(response => new fromCustomersActions.AddCustomerSuccess(response)
+            ),
+            catchError(error => of(new fromCustomersActions.AddCustomerFail(error)))
+        )
+        )));
 }

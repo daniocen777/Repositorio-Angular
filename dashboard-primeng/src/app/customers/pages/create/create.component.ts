@@ -13,7 +13,7 @@ import { Customer } from '../../models/customer.model';
 })
 export class CreateComponent implements OnInit {
   @Input() displayResponsive: boolean;
-  @Input() customer: Customer = { name: '', email: '', age: 0 };
+  @Input() customer: Customer = { name: '', email: '', age: 18 };
   @Output() hideDialog = new EventEmitter<boolean>();
 
   myForm: FormGroup;
@@ -41,7 +41,12 @@ export class CreateComponent implements OnInit {
   }
 
   save(myForm: FormGroup): void {
-    console.log('GUARDAR:', myForm.value);
+    let customerId = new Date().getTime();
+    let newCustomer = myForm.value;
+    newCustomer['id'] = customerId;
+    if (newCustomer.name != null && newCustomer != undefined) {
+      this._store.dispatch(new fromStore.AddCustomer(newCustomer));
+    }
     this.cancel();
   }
 

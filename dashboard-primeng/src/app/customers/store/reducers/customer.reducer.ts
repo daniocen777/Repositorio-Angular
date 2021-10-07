@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { Customer } from '../../models/customer.model';
-import * as fronCustomerActions from '../actions/customer.actions';
+import * as fromCustomerActions from '../actions/customer.actions';
 
 export interface CustomerState {
     data: Customer[];
@@ -16,15 +16,15 @@ export const initialState: CustomerState = {
     error: ''
 };
 
-export function reducer(state: CustomerState = initialState, action: fronCustomerActions.CustomerActions): CustomerState {
+export function reducer(state: CustomerState = initialState, action: fromCustomerActions.CustomerActions): CustomerState {
     switch (action.type) {
-        case fronCustomerActions.LOAD_CUSTOMERS: {
+        case fromCustomerActions.LOAD_CUSTOMERS: {
             return {
                 ...state,
                 loading: true
             };
         }
-        case fronCustomerActions.LOAD_CUSTOMERS_SUCCESS: {
+        case fromCustomerActions.LOAD_CUSTOMERS_SUCCESS: {
             const customers: Customer[] = action.payload;
             return {
                 ...state,
@@ -33,7 +33,7 @@ export function reducer(state: CustomerState = initialState, action: fronCustome
                 data: customers
             };
         }
-        case fronCustomerActions.LOAD_CUSTOMERS_FAIL: {
+        case fromCustomerActions.LOAD_CUSTOMERS_FAIL: {
             return {
                 ...state,
                 loaded: false,
@@ -41,7 +41,7 @@ export function reducer(state: CustomerState = initialState, action: fronCustome
                 error: action.payload
             };
         }
-        case fronCustomerActions.UPDATE_CUSTOMER_SUCCESS: {
+        case fromCustomerActions.UPDATE_CUSTOMER_SUCCESS: {
             let customerForUpdate = state.data.map(customer => {
                 if (customer.id === action.payload.id) {
                     return action.payload;
@@ -55,6 +55,24 @@ export function reducer(state: CustomerState = initialState, action: fronCustome
                 data: customerForUpdate,
                 loaded: true,
                 loading: false
+            };
+        }
+        case fromCustomerActions.UPDATE_CUSTOMER_FAIL: {
+            return {
+                ...state,
+                error: action.payload
+            };
+        }
+        case fromCustomerActions.ADD_CUSTOMER_SUCCESS: {
+            return {
+                ...state,
+                data: [...state.data, action.payload]
+            };
+        }
+        case fromCustomerActions.ADD_CUSTOMER_FAIL: {
+            return {
+                ...state,
+                error: action.payload
             };
         }
         default: {
