@@ -13,6 +13,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   exports: [
@@ -29,7 +31,9 @@ import { ToastModule } from 'primeng/toast';
     InputNumberModule,
     TooltipModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    MessagesModule,
+    MessageModule
   ]
 })
 export class PrimeModule { }

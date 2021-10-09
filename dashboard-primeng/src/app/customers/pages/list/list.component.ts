@@ -62,9 +62,10 @@ export class ListComponent implements OnInit, OnDestroy {
     this.displayDialog = true;
     this.isEdit = false;
     this.selectedCustomer = {
+      id: 0,
       name: '',
       email: '',
-      age: 0
+      age: 18
     }
   }
 

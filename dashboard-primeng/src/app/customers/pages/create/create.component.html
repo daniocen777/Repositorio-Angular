@@ -1,14 +1,14 @@
-<p-dialog
-  header="Header"
-  [(visible)]="displayResponsive"
-  [breakpoints]="{ '960px': '75vw' }"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false"
-  [modal]="true"
-  (onHide)="hideResponsiveDialog()"
->
-  <form autocomplete="off" [formGroup]="myForm">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="submit()">
+  <p-dialog
+    header="Header"
+    [(visible)]="displayResponsive"
+    [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+    [modal]="true"
+    (onHide)="hideResponsiveDialog()"
+  >
     <div class="card">
       <div class="p-fluid">
         <div class="p-field">
@@ -20,6 +20,9 @@
             formControlName="name"
             [(ngModel)]="customer!.name"
           />
+          <small *ngIf="validateField('name')" id="name" class="p-error"
+            >Debe escribir nombre y apellido.</small
+          >
         </div>
         <div class="p-field">
           <label for="email">Email</label>
@@ -30,6 +33,15 @@
             formControlName="email"
             [(ngModel)]="customer!.email"
           />
+          <small *ngIf="validateField('email')" id="email" class="p-error">
+            {{ emailErrorsMessages }}
+          </small>
+          <!-- <small *ngIf="validateEmail()" id="email" class="p-error"
+            >El correo es requerido.</small
+          >
+          <small *ngIf="validateEmailPattern()" id="email" class="p-error"
+            >El correo no tiene el formato deseado.</small
+          > -->
         </div>
         <div class="p-field">
           <label for="age">Age</label>
@@ -52,26 +64,18 @@
         />
       </div>
     </div>
-  </form>
-  <ng-template pTemplate="footer">
-    <p-button
-      (click)="cancel()"
-      label="Cancelar"
-      styleClass="p-button-text"
-    ></p-button>
-    <p-button
-      *ngIf="!isUpdateEnable"
-      type="submit"
-      (click)="save(myForm)"
-      label="Crear"
-      styleClass="p-button-text"
-    ></p-button>
-    <p-button
-      *ngIf="isUpdateEnable"
-      type="submit"
-      (click)="update(myForm)"
-      label="Actualizar"
-      styleClass="p-button-text"
-    ></p-button>
-  </ng-template>
-</p-dialog>
+    <ng-template pTemplate="footer">
+      <p-button
+        (click)="cancel()"
+        label="Cancelar"
+        styleClass="p-button-text"
+      ></p-button>
+      <button
+        pButton
+        type="submit"
+        [disabled]="myForm.invalid"
+        label="{{ !isUpdateEnable ? 'Crear' : 'Actualizar' }}"
+      ></button>
+    </ng-template>
+  </p-dialog>
+</form>
