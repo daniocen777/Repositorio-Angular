@@ -22,6 +22,12 @@ export const ADD_CUSTOMER_SUCCESS = " [Customer] ADD_CUSTOMER_SUCCESS"
 
 export const ADD_CUSTOMER_FAIL = " [Customer] UPDATE_CUSTOMER_FAIL"
 
+/* Delete */
+export const DELETE_CUSTOMER = " [Customer] DELETE_CUSTOMER"
+
+export const DELETE_CUSTOMER_SUCCESS = " [Customer] DELETE_CUSTOMER_SUCCESS"
+
+export const DELETE_CUSTOMER_FAIL = " [Customer] DELETE_CUSTOMER_FAIL"
 
 /* Lista */
 export class LoadCustomers implements Action {
@@ -70,7 +76,24 @@ export class AddCustomerFail implements Action {
     constructor(public payload: any) { }
 }
 
+/* Delete */
+export class DeleteCustomer implements Action {
+    readonly type = DELETE_CUSTOMER;
+    constructor(public payload: number) { }
+}
+
+export class DeleteCustomerSuccess implements Action {
+    readonly type = DELETE_CUSTOMER_SUCCESS;
+    constructor(public payload: any) { }
+}
+
+export class DeleteCustomerFail implements Action {
+    readonly type = DELETE_CUSTOMER_FAIL;
+    constructor(public payload: any) { }
+}
+
 
 export type CustomerActions = LoadCustomers | LoadCustomersSuccess |
     LoadCustomersFail | UpdateCustomer | UpdateCustomerSuccess | UpdateCustomerFail |
-    AddCustomer | AddCustomerSuccess | AddCustomerFail;
+    AddCustomer | AddCustomerSuccess | AddCustomerFail |
+    DeleteCustomer | DeleteCustomerSuccess | DeleteCustomerFail;
