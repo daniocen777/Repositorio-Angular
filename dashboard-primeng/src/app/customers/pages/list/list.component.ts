@@ -69,14 +69,14 @@ export class ListComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteConfirm() {
-    console.log('ELIMINANDO');
+  deleteConfirm(customer: Customer) {
     this._confirmationService.confirm({
-      message: '¿Está seguro de eliminar este dato?',
+      message: `¿Está seguro de eliminar a ${customer.name}?`,
       header: 'Confirmar Eliminación',
       icon: 'pi pi-info-circle',
       accept: () => {
-        this._messageService.add({ severity: 'info', summary: 'Confirmado', detail: 'Cliente eliminado' });
+        // this._messageService.add({ severity: 'info', summary: 'Confirmado', detail: 'Cliente eliminado' });
+        this._store.dispatch(new fromStore.DeleteCustomer(customer.id!));
       },
       reject: (type: any) => {
         switch (type) {
