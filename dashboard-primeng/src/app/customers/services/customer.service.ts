@@ -28,4 +28,8 @@ export class CustomerService {
   addCustomer(customer: Customer): Observable<any> {
     return this._http.post(`${this._apiUrl}`, JSON.stringify(customer), this.httpHeader);
   }
+
+  deleteCustomer(id: number): Observable<any> {
+    return this._http.delete(`${this._apiUrl}/${id}`);
+  }
 }
