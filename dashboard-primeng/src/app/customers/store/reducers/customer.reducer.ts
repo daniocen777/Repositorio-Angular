@@ -75,6 +75,21 @@ export function reducer(state: CustomerState = initialState, action: fromCustome
                 error: action.payload
             };
         }
+        case fromCustomerActions.DELETE_CUSTOMER: {
+            const customerId = action.payload;
+            console.log('idddddd', customerId);
+            return {
+                ...state,
+                data: [...state.data.filter((customer: Customer) => customer.id !== customerId)]
+            };
+        }
+        case fromCustomerActions.DELETE_CUSTOMER_FAIL: {
+            console.log('ERRORORRO');
+            return {
+                ...state,
+                error: action.payload
+            };
+        }
         default: {
             return state;
         }
