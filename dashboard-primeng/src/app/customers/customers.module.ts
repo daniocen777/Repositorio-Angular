@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { CustomersRoutingModule } from './customers-routing.module';
 
@@ -24,7 +25,7 @@ import { BlankComponent } from './pages/blank/blank.component';
     BlankComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, CustomersRoutingModule, 
-    PrimeModule, SharedModule,
+    PrimeModule, SharedModule,FormsModule,
     StoreModule.forRoot(reducers), EffectsModule.forRoot(effects)]
 })
 export class CustomersModule { }
