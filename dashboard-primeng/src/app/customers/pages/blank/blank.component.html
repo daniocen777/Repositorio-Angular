@@ -1,6 +1,27 @@
 <div class="grid flex align-items-center">
-  <div class="hidden md:inline-flex align-items-center bg-yellow-500 mt-5 justify-content-center md:col-3 lg:col-3">
-    A
+  <div
+    class="
+      hidden
+      md:inline-flex
+      align-items-center
+      mt-5
+      justify-content-center
+      md:col-3
+      lg:col-3
+    "
+  >
+    <p-listbox
+      [options]="customers"
+      [metaKeySelection]="false"
+      [filter]="true"
+      optionLabel="name"
+      [listStyle]="{ 'max-height': '250px' }"
+      [style]="{ width: '15rem' }"
+    >
+      <ng-template let-customer pTemplate="item">
+        <div style="height:100%; width:100%;" (click)="showCustomer(customer)">{{ customer.name }}</div>
+      </ng-template>
+    </p-listbox>
   </div>
-  <div class=" inline-block col-12 md:col-9 lg:col-9 mt-5 bg-blue-500">B</div>
+  <div class="inline-block col-12 md:col-9 lg:col-9 mt-5">B</div>
 </div>
