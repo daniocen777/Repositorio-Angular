@@ -15,6 +15,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   exports: [
@@ -33,7 +34,8 @@ import { MessageModule } from 'primeng/message';
     ConfirmDialogModule,
     ToastModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    ListboxModule
   ]
 })
 export class PrimeModule { }
