@@ -7,7 +7,7 @@ import { ListComponent } from './pages/list/list.component';
 const routes: Routes = [
   {
     path: '', component: CustomerMainComponent, children: [
-      { path: '', pathMatch: 'full', redirectTo: 'list' },
+      { path: '', pathMatch: 'full', redirectTo: 'blank' },
       { path: 'list', component: ListComponent },
       { path: 'blank', component: BlankComponent }
     ]
