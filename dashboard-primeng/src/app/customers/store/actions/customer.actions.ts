@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { Client } from "../../models/client.model";
 import { Customer } from "../../models/customer.model";
 
 /* Lita */
@@ -36,7 +37,7 @@ export class LoadCustomers implements Action {
 
 export class LoadCustomersSuccess implements Action {
     readonly type = LOAD_CUSTOMERS_SUCCESS;
-    constructor(public payload: Customer[]) { }
+    constructor(public payload: Client[]) { }
 }
 
 export class LoadCustomersFail implements Action {
