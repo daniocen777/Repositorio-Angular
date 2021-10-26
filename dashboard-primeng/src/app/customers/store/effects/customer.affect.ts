@@ -21,7 +21,7 @@ export class CustomerEffects {
         // ofType => Escuchar el action
         ofType(fromCustomersActions.LOAD_CUSTOMERS),
         // Interactiar con el api
-        switchMap(() => this._customerService.getCustomers().pipe(
+        switchMap(() => this._customerService.getCustomersJavaApi().pipe(
             map(response => {
                 return new fromCustomersActions.LoadCustomersSuccess(response);
             },
