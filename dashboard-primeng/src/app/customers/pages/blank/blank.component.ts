@@ -5,6 +5,7 @@ import { Customer } from '../../models/customer.model';
 import { Store } from '@ngrx/store';
 
 import * as fromStore from '../../store';
+import { Client } from '../../models/client.model';
 
 @Component({
   selector: 'app-blank',
@@ -12,12 +13,12 @@ import * as fromStore from '../../store';
   styleUrls: ['./blank.component.scss']
 })
 export class BlankComponent implements OnInit, OnDestroy {
-  customers: Customer[] = [];
-  selectedCustomer: Customer = {};
+  customers: Client[] = [];
+  selectedCustomer: Client = {};
   private customerSubscription: Subscription = new Subscription;
 
   constructor(private _store: Store<fromStore.CustomerModuleState>) {
-    this.customerSubscription = this._store.select(fromStore.getCustomers).subscribe((customers: Customer[]) => {
+    this.customerSubscription = this._store.select(fromStore.getCustomers).subscribe((customers: Client[]) => {
       this.customers = customers;
     });
   }
@@ -30,7 +31,7 @@ export class BlankComponent implements OnInit, OnDestroy {
     this.customerSubscription.unsubscribe();
   }
 
-  showCustomer(customer: Customer): void {
+  showCustomer(customer: Client): void {
     this.selectedCustomer = customer;
     console.log(this.selectedCustomer);
   }

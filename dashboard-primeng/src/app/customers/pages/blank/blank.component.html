@@ -14,12 +14,12 @@
       [options]="customers"
       [metaKeySelection]="false"
       [filter]="true"
-      optionLabel="name"
+      optionLabel="nombre"
       [listStyle]="{ 'max-height': '250px' }"
       [style]="{ width: '15rem' }"
     >
       <ng-template let-customer pTemplate="item">
-        <div style="height:100%; width:100%;" (click)="showCustomer(customer)">{{ customer.name }}</div>
+        <div style="height:100%; width:100%;" (click)="showCustomer(customer)">{{ customer.nombre }}</div>
       </ng-template>
     </p-listbox>
   </div>
