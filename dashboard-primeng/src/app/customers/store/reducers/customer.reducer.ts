@@ -1,9 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import { Client } from '../../models/client.model';
 import { Customer } from '../../models/customer.model';
 import * as fromCustomerActions from '../actions/customer.actions';
 
 export interface CustomerState {
-    data: Customer[];
+    data: Client[];
     loaded: boolean;
     loading: boolean;
     error: string;
@@ -25,7 +26,7 @@ export function reducer(state: CustomerState = initialState, action: fromCustome
             };
         }
         case fromCustomerActions.LOAD_CUSTOMERS_SUCCESS: {
-            const customers: Customer[] = action.payload;
+            const customers: Client[] = action.payload;
             return {
                 ...state,
                 loading: false,
