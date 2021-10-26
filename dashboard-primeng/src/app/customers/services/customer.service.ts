@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../models/customer.model';
 import { Observable } from 'rxjs';
+import { Client } from '../models/client.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,4 +33,11 @@ export class CustomerService {
   deleteCustomer(id: number): Observable<any> {
     return this._http.delete(`${this._apiUrl}/${id}`);
   }
+  /* Java Api */
+  private _javaApiUrl = 'http://localhost:8090/api/clientes';
+
+  getCustomersJavaApi(): Observable<Client[]> {
+    return this._http.get<Client[]>(`${this._javaApiUrl}`);
+  }
+
 }
