@@ -1,0 +1,28 @@
+<div class="container">
+  <form (ngSubmit)="create()">
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>nombre</mat-label>
+        <input matInput placeholder="Nombre" [(ngModel)]="cliente.nombre" name="nombre" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>apellido</mat-label>
+        <input matInput placeholder="Apellido" [(ngModel)]="cliente.apellido" name="apellido" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>correo</mat-label>
+        <input matInput placeholder="Correo" [(ngModel)]="cliente.email" name="email" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <button mat-stroked-button color="primary">Primary</button>
+    </p>
+  </form>
+</div>
