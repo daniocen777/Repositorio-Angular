@@ -1,0 +1,112 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" routerLink="/CrearPaciente">
+    Registrar paciente
+  </button>
+</div>
+
+<div class="example-container">
+  <form autocomplete="off" [formGroup]="formulario">
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione tipo de documento</mat-label>
+      <mat-select formControlName="idTipoDocide">
+        <mat-option
+          *ngFor="let item of tiposDeDocumentos"
+          [value]="item.idTipoDocumentoIdentidad"
+        >
+          {{ item.descripcionTipoDocumentoIdentidad }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="validarCampos('idTipoDocide')"
+        >Este campo es obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Número de documento</mat-label>
+      <input matInput placeholder="documento" formControlName="noDocide" />
+      <mat-error *ngIf="validarCampos('noDocide')"
+        >Este campo es obligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Apellidos</mat-label>
+      <input matInput placeholder="apellidos" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombres</mat-label>
+      <input matInput placeholder="nombres" />
+    </mat-form-field>
+
+    <div class="example-button-row">
+      <span class="spacer"></span>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="cargarpacientes()"
+      >
+        Buscar
+      </button>
+      <button mat-raised-button color="accent">Limpiar</button>
+    </div>
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+<br />
+<!-- Tabla -->
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef>Nombres</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.noNombres }} {{ element.noApepat }} {{ element.noApemat }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="tipoDeDoc">
+    <mat-header-cell *matHeaderCellDef>Tipo de Doc.</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.idTipoDocide | documento }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="numeroDeDoc">
+    <mat-header-cell *matHeaderCellDef>Número de Doc.</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.noDocide }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaNac">
+    <mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.feNacimiento | date }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <mat-header-cell *matHeaderCellDef>Número de Doc.</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.noDocide }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="editar">
+    <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        matTooltip="Editar"
+        color="default"
+        style="margin-right: 20px"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="cabecera"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: cabecera"></mat-row>
+</mat-table>
