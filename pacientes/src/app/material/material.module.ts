@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

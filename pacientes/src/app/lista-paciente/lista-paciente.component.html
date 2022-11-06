@@ -5,6 +5,7 @@
 </div>
 
 <div class="example-container">
+  <div *ngIf="!mensaje"> {{ mensaje }} </div>
   <form autocomplete="off" [formGroup]="formulario">
     <mat-form-field appearance="fill">
       <mat-label>Seleccione tipo de documento</mat-label>
@@ -25,18 +26,24 @@
       <mat-label>Número de documento</mat-label>
       <input matInput placeholder="documento" formControlName="noDocide" />
       <mat-error *ngIf="validarCampos('noDocide')"
-        >Este campo es obligatorio</mat-error
-      >
+        >Este campo es obligatorio
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Apellidos</mat-label>
-      <input matInput placeholder="apellidos" />
+      <input matInput placeholder="apellidos" formControlName="apellido" />
+      <mat-error *ngIf="validarCampos('apellido')"
+        >Este campo es obligatorio
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Nombres</mat-label>
-      <input matInput placeholder="nombres" />
+      <input matInput placeholder="nombres" formControlName="nombres" />
+       <mat-error *ngIf="validarCampos('nombres')"
+        >Este campo es obligatorio
+      </mat-error>
     </mat-form-field>
 
     <div class="example-button-row">
@@ -49,7 +56,7 @@
       >
         Buscar
       </button>
-      <button mat-raised-button color="accent">Limpiar</button>
+      <button mat-raised-button color="accent" (click)="limpiar()">Limpiar</button>
     </div>
   </form>
 </div>
@@ -87,9 +94,9 @@
   </ng-container>
 
   <ng-container matColumnDef="estado">
-    <mat-header-cell *matHeaderCellDef>Número de Doc.</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Estado.</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.noDocide }}
+      <mat-checkbox [checked]="checked" [disabled]="true"></mat-checkbox>
     </mat-cell>
   </ng-container>
 
@@ -103,6 +110,20 @@
         style="margin-right: 20px"
       >
         <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="eliminar">
+    <mat-header-cell *matHeaderCellDef>Eliminar</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        matTooltip="Eliminar"
+        color="warn"
+        style="margin-right: 20px"
+      >
+        <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>
   </ng-container>

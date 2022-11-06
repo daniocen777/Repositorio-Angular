@@ -26,6 +26,8 @@ import {
   styleUrls: ['./lista-paciente.component.scss']
 })
 export class ListaPacienteComponent implements OnInit, OnDestroy {
+  checked: boolean = true;
+  mensaje?: string;
   tiposDeDocumentos: Documento[] = [];
   pacientes: Paciente[] = [];
   // Formulario
@@ -37,7 +39,8 @@ export class ListaPacienteComponent implements OnInit, OnDestroy {
     'numeroDeDoc',
     'fechaNac',
     'estado',
-    'editar'
+    'editar',
+    'eliminar'
   ];
   /* Datos para la tabla */
   dataSource = new MatTableDataSource<Paciente>();
@@ -48,7 +51,9 @@ export class ListaPacienteComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private _pacienteService: PacienteService) {
     this.formulario = this.fb.group({
       idTipoDocide: ["", [Validators.required]],
-      noDocide: ["", [Validators.required]]
+      noDocide: ["", [Validators.required]],
+      apellido: ["", [Validators.required]],
+      nombres: ["", [Validators.required]]
     });
   }
 
@@ -66,14 +71,35 @@ export class ListaPacienteComponent implements OnInit, OnDestroy {
 
 
   cargarpacientes(): void {
-    this._subs = this._pacienteService.listarPacientes().pipe(
-      map((items: Paciente[]) => items.filter(
-        item => item.idTipoDocide == this.formulario.value.idTipoDocide && item.noDocide == this.formulario.value.noDocide)
-      )
-    ).subscribe((data: Paciente[]) => this.dataSource.data = data);
+
+    if (this.formulario.value.idTipoDocide && this.formulario.value.noDocide) {
+      this._subs = this._pacienteService.listarPacientes().pipe(
+        map((items: Paciente[]) => items.filter(
+          item => item.idTipoDocide == this.formulario.value.idTipoDocide && item.noDocide == this.formulario.value.noDocide)
+        )
+      ).subscribe((data: Paciente[]) => this.dataSource.data = data);
+    } else if (this.formulario.value.apellido) {
+      this._subs = this._pacienteService.listarPacientes().pipe(
+        map((items: Paciente[]) => items.filter(
+          item => item.noApepat.toLowerCase().includes(this.formulario.value.apellido.toLowerCase()))
+        )
+      ).subscribe((data: Paciente[]) => this.dataSource.data = data);
+    } else if (this.formulario.value.nombres) {
+      this._subs = this._pacienteService.listarPacientes().pipe(
+        map((items: Paciente[]) => items.filter(
+          item => item.noNombres.toLowerCase().includes(this.formulario.value.nombres.toLowerCase()))
+        )
+      ).subscribe((data: Paciente[]) => this.dataSource.data = data);
+    } else {
+      this.mensaje = "Debe seleccionar un criterio de búsqueda";
+    }
+  }
+  
+  limpiar(): void {
+     this.formulario.reset();
   }
 
-  listarPacientes(): void {
+  test(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
       return;
@@ -87,6 +113,5 @@ export class ListaPacienteComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._subs.unsubscribe()
   }
-
 
 }
